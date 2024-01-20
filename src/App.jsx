@@ -2,8 +2,8 @@ import React from "react";
 
 import { Stack } from "@mui/material";
 
-import CustomButton from "./Components/CustomButton";
-import { AppProvider, useAppContext } from "./AppContext";
+import { AppProvider } from "./AppContext";
+import PrivateSection from "./PrivateSection";
 
 const App = () => {
   return (
@@ -17,18 +17,6 @@ const App = () => {
 };
 
 export default App;
-
-const PrivateSection = () => {
-  const { user } = useAppContext();
-
-  return (
-    <Stack>
-      <h1>{`the user is ${JSON.stringify(user)}`}</h1>
-      <CustomButton text="Log In" onClick={() => console.log("LOG IN")} />
-      <CustomButton text="Sing Up" onClick={() => console.log("SING UP")} />
-    </Stack>
-  );
-};
 
 const PublicSection = () => {
   return (
