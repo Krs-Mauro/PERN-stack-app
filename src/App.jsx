@@ -8,7 +8,11 @@ import PrivateSection from "./PrivateSection";
 const App = () => {
   return (
     <AppProvider>
-      <Stack>
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        sx={{ height: "100vh" }}
+      >
         <PrivateSection />
         <PublicSection />
       </Stack>

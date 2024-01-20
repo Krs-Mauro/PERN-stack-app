@@ -1,16 +1,9 @@
-import { useEffect } from "react";
-
-const useFetchUser = (client, setUser) => {
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-      } = await client.auth.getUser();
-      if (user) {
-        setUser(user);
-      }
-    };
-    fetchUser();
-  }, []);
+const useFetchUser = async (client, setUser) => {
+  const {
+    data: { user },
+  } = await client.auth.getUser();
+  if (user) {
+    setUser(user);
+  }
 };
 export default useFetchUser;
