@@ -57,6 +57,7 @@ const AccessForm = ({ stage, setStage }) => {
           type="email"
           name="email"
           placeholder="email"
+          disabled={loading}
           required
           style={inputStyles}
         />
@@ -64,6 +65,7 @@ const AccessForm = ({ stage, setStage }) => {
           type="password"
           name="password"
           placeholder="password"
+          disabled={loading}
           required
           style={inputStyles}
         />
@@ -71,7 +73,20 @@ const AccessForm = ({ stage, setStage }) => {
         {loading ? (
           <CircularProgress sx={{ color: "#fa4217" }} size={24} />
         ) : (
-          <CustomButton type="submit" text={submitText} />
+          <>
+            <CustomButton type="submit" text={submitText} />
+            <h5>{`If you ${
+              stage === "logging"
+                ? "are new sing up instead"
+                : "already have an account log in"
+            }`}</h5>
+            <CustomButton
+              text={stage === "logging" ? "Sing Up" : "Log In"}
+              onClick={() =>
+                setStage(stage === "logging" ? "singing" : "logging")
+              }
+            />
+          </>
         )}
       </Stack>
     </form>

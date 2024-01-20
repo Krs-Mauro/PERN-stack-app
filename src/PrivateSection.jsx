@@ -35,10 +35,10 @@ const PrivateSection = () => {
       )}
 
       {stage === "logged" && (
-        <>
+        <Stack alignItems="center">
           <h1>{`Welcome ${user.email}`}</h1>
           <LogOutButton setStage={setStage} />
-        </>
+        </Stack>
       )}
     </Stack>
   );
