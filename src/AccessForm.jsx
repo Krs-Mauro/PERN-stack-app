@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { Stack, CircularProgress } from "@mui/material";
+import { Stack } from "@mui/material";
 
 import { useAppContext } from "./AppContext";
 import useFetchUser from "./helpers/useFetchUser";
 import CustomButton from "./Components/CustomButton";
+import Spinner from "./Components/Spinner";
 
 const AccessForm = ({ stage, setStage }) => {
   const { supabase, user, setUser } = useAppContext();
@@ -71,7 +72,7 @@ const AccessForm = ({ stage, setStage }) => {
         />
 
         {loading ? (
-          <CircularProgress sx={{ color: "#fa4217" }} size={24} />
+          <Spinner />
         ) : (
           <>
             <CustomButton type="submit" text={submitText} />

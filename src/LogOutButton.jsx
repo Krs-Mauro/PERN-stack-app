@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import { Stack, CircularProgress } from "@mui/material";
+import { Stack } from "@mui/material";
 
 import { useAppContext } from "./AppContext";
 import CustomButton from "./Components/CustomButton";
+import Spinner from "./Components/Spinner";
 
 const LogOutButton = ({ setStage }) => {
   const { supabase } = useAppContext();
@@ -12,7 +13,7 @@ const LogOutButton = ({ setStage }) => {
   return (
     <Stack>
       {loading ? (
-        <CircularProgress sx={{ color: "#fa4217" }} size={24} />
+        <Spinner />
       ) : (
         <CustomButton
           text="Log Out"
