@@ -6,15 +6,11 @@ import { useAppContext } from "./AppContext";
 import useFetchUser from "./helpers/useFetchUser";
 import CustomButton from "./Components/CustomButton";
 import Spinner from "./Components/Spinner";
+import { inputStyles } from "./helpers/styles";
 
 const AccessForm = ({ stage, setStage }) => {
   const { supabase, user, setUser } = useAppContext();
   const [loading, setLoading] = useState(false);
-  const inputStyles = {
-    width: "292px",
-    height: "30px",
-    alignItems: "center",
-  };
 
   let submitText = "Log In";
 

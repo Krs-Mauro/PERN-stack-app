@@ -9,9 +9,9 @@ import ItemsTable from "./ItemsTable";
 
 const PublicSection = () => {
   const [loading, setLoading] = useState(false);
-  const [items, SetItems] = useState([]);
-  const { supabase } = useAppContext();
 
+  const { supabase } = useAppContext();
+  const [items, SetItems] = useState([]);
   useEffect(() => {
     useFetchItems(supabase, SetItems, setLoading);
   }, []);
@@ -19,7 +19,7 @@ const PublicSection = () => {
   return (
     <Stack alignItems="center">
       <h1>All Items</h1>
-      {loading ? <Spinner /> : <ItemsTable items={items} />}
+      {loading ? <Spinner /> : <ItemsTable items={items} setItems={SetItems} />}
     </Stack>
   );
 };

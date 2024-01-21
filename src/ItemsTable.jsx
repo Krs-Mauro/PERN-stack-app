@@ -1,25 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { Box } from "@mui/material";
+
+import { useAppContext } from "./AppContext";
 import Remove from "./Components/RemoveIcon";
+import { headStyle, rowStyle, iconStyle } from "./helpers/styles";
+import subscribeToDB from "./helpers/databaseSubcriber";
 
-const ItemsTable = ({ items, isPublic }) => {
+const ItemsTable = ({ items, setItems, isPublic }) => {
   const [loadingRemove, setLoadingRemove] = useState(false);
+  const { supabase } = useAppContext();
 
-  const headStyle = {
-    padding: "15px",
-    fontSize: "1.5rem",
-    textAlign: "center",
-  };
-
-  const rowStyle = {
-    padding: "15px",
-    textAlign: "center",
-  };
-
-  const iconStyle = {
-    backgroundColor: "transparent",
-    border: "none",
-    cursor: "pointer",
-  };
+  subscribeToDB(supabase, items, setItems);
 
   const handleRemove = async (id) => {
     setLoadingRemove(true);
@@ -28,26 +20,35 @@ const ItemsTable = ({ items, isPublic }) => {
     setLoadingRemove(false);
   };
   return (
-    <table>
-      <tr>
-        <th style={headStyle}>Name</th>
-        <th style={headStyle}>Qty</th>
-        {isPublic && <th style={headStyle}></th>}
-      </tr>
-      {items.map((item) => (
-        <tr key={item.id}>
-          <td style={rowStyle}>{item.Name}</td>
-          <td style={rowStyle}>{item.Qty}</td>
-          {isPublic && (
-            <td style={rowStyle}>
-              <button style={iconStyle} onClick={() => handleRemove(item.id)}>
-                <Remove loading={loadingRemove} />
-              </button>
-            </td>
-          )}
-        </tr>
-      ))}
-    </table>
+    <Box sx={{ maxHeight: "60vh", overflowX: "hidden", overflowY: "auto" }}>
+      <table>
+        <thead>
+          <tr>
+            <th style={headStyle}>Name</th>
+            <th style={headStyle}>Qty</th>
+            {isPublic && <th style={headStyle}></th>}
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item) => (
+            <tr key={item.id}>
+              <td style={rowStyle}>{item.Name}</td>
+              <td style={rowStyle}>{item.Qty}</td>
+              {isPublic && (
+                <td style={rowStyle}>
+                  <button
+                    style={iconStyle}
+                    onClick={() => handleRemove(item.id)}
+                  >
+                    <Remove loading={loadingRemove} />
+                  </button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Box>
   );
 };
 
