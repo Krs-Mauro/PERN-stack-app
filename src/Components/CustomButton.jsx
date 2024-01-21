@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "@mui/material";
 
-const CustomButton = ({ text, onClick, ...props }) => {
+const CustomButton = ({ margin, text, onClick, ...props }) => {
   return (
     <Button
       variant="outlined"
@@ -10,7 +10,7 @@ const CustomButton = ({ text, onClick, ...props }) => {
         backgroundColor: "#fa4217",
         color: "#f7f8d9",
         border: "none",
-        marginBottom: "10px",
+        marginBottom: margin || "10px",
         width: "300px",
         "&:hover": {
           backgroundColor: "#c53515",

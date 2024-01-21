@@ -19,7 +19,11 @@ const PublicSection = () => {
   return (
     <Stack alignItems="center">
       <h1>All Items</h1>
-      {loading ? <Spinner /> : <ItemsTable items={items} setItems={SetItems} />}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <ItemsTable items={items} setItems={SetItems} isPublic />
+      )}
     </Stack>
   );
 };

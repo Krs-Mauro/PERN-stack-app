@@ -16,6 +16,7 @@ const LogOutButton = ({ setStage }) => {
         <Spinner />
       ) : (
         <CustomButton
+          margin="0"
           text="Log Out"
           onClick={async () => {
             setLoading(true);

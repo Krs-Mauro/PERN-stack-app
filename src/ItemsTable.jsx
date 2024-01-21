@@ -20,13 +20,13 @@ const ItemsTable = ({ items, setItems, isPublic }) => {
     setLoadingRemove(false);
   };
   return (
-    <Box sx={{ maxHeight: "60vh", overflowX: "hidden", overflowY: "auto" }}>
+    <Box sx={{ maxHeight: "25vh", overflowY: "auto" }}>
       <table>
         <thead>
           <tr>
             <th style={headStyle}>Name</th>
             <th style={headStyle}>Qty</th>
-            {isPublic && <th style={headStyle}></th>}
+            {!isPublic && <th style={headStyle}></th>}
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@ const ItemsTable = ({ items, setItems, isPublic }) => {
             <tr key={item.id}>
               <td style={rowStyle}>{item.Name}</td>
               <td style={rowStyle}>{item.Qty}</td>
-              {isPublic && (
+              {!isPublic && (
                 <td style={rowStyle}>
                   <button
                     style={iconStyle}

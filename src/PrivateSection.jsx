@@ -6,11 +6,11 @@ import { useAppContext } from "./AppContext";
 import CustomButton from "./Components/CustomButton";
 import AccessForm from "./AccessForm";
 import useFetchUser from "./helpers/useFetchUser";
-import LogOutButton from "./LogOutButton";
-import CreateItemsButton from "./CreateItemsButton";
+import UserArea from "./UserArea";
 
 const PrivateSection = () => {
   const { user, supabase, setUser } = useAppContext();
+
   const [stage, setStage] = useState("NotLogged");
 
   useEffect(() => {
@@ -35,13 +35,7 @@ const PrivateSection = () => {
         <AccessForm stage={stage} setStage={setStage} />
       )}
 
-      {stage === "logged" && (
-        <Stack alignItems="center">
-          <h1>{`Welcome ${user.email}`}</h1>
-          <CreateItemsButton />
-          <LogOutButton setStage={setStage} />
-        </Stack>
-      )}
+      {stage === "logged" && <UserArea setStage={setStage} />}
     </Stack>
   );
 };

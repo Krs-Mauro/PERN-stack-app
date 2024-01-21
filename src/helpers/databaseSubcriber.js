@@ -5,8 +5,11 @@ const subscribeToDB = (supabase, items, setItems) => {
       "postgres_changes",
       { event: "*", schema: "public", table: "Items" },
       (payload) => {
-        if (payload.eventType == "INSERT") {
+        if (payload.eventType === "INSERT") {
           setItems([...items, payload.new]);
+        }
+        if (payload.eventType === "DELETE") {
+          setItems(items.filter((item) => item.id !== payload.old.id));
         }
       }
     )
