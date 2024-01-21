@@ -7,7 +7,7 @@ import CustomButton from "./Components/CustomButton";
 import AccessForm from "./AccessForm";
 import useFetchUser from "./helpers/useFetchUser";
 import LogOutButton from "./LogOutButton";
-import CreateItems from "./CreateItems";
+import CreateItemsButton from "./CreateItemsButton";
 
 const PrivateSection = () => {
   const { user, supabase, setUser } = useAppContext();
@@ -38,7 +38,7 @@ const PrivateSection = () => {
       {stage === "logged" && (
         <Stack alignItems="center">
           <h1>{`Welcome ${user.email}`}</h1>
-          <CreateItems />
+          <CreateItemsButton />
           <LogOutButton setStage={setStage} />
         </Stack>
       )}

@@ -4,6 +4,7 @@ import { Stack } from "@mui/material";
 
 import { AppProvider } from "./AppContext";
 import PrivateSection from "./PrivateSection";
+import PublicSection from "./PublicSection";
 
 const App = () => {
   return (
@@ -21,13 +22,3 @@ const App = () => {
 };
 
 export default App;
-
-const PublicSection = () => {
-  return (
-    <Stack>
-      <h1>Public Section</h1>
-      <h2>Hello</h2>
-      <h3>World</h3>
-    </Stack>
-  );
-};

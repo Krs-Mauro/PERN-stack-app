@@ -4,7 +4,7 @@ import { useAppContext } from "./AppContext";
 import CustomButton from "./Components/CustomButton";
 import Spinner from "./Components/Spinner";
 
-const CreateItems = () => {
+const CreateItemsButton = () => {
   const [loading, setLoading] = useState(false);
   const { user, supabase } = useAppContext();
   const handleCreateItem = async () => {
@@ -30,4 +30,4 @@ const CreateItems = () => {
   );
 };
 
-export default CreateItems;
+export default CreateItemsButton;
