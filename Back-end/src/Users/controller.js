@@ -1,6 +1,8 @@
 const pool = require("../db");
 const queries = require("./queries");
 
+// TODO: sanitize user input
+
 const getUserByEmail = (req, res) => {
   pool.query(queries.getUserByEmail, [req.body.email], (err, result) => {
     if (err) {
