@@ -11,12 +11,12 @@ const getUserByEmail = (req, res) => {
       res.status(404).json({ error: "User not found" });
       return;
     }
-    res.status(200).json(user);
+    res.status(200).json(result.rows[0]);
   });
 };
 
 const getUserById = (req, res) => {
-  pool.query(queries.getUserById, [req.params.id], (err, result) => {
+  pool.query(queries.getUserById, [req.body.id], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -72,7 +72,7 @@ const logUserIn = (req, res) => {
 };
 
 const logUserOut = (req, res) => {
-  pool.query(queries.logUserOut, [req.params.id], (err, result) => {
+  pool.query(queries.logUserOut, [req.body.id], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
