@@ -4,16 +4,16 @@ import { useAppContext } from "./AppContext";
 import LogOutButton from "./LogOutButton";
 import CreateItemsButton from "./CreateItemsButton";
 import ItemsTable from "./ItemsTable";
-import useFetchItems from "./helpers/useFetchItems";
+import useFetchItemsByUserId from "./helpers/useFetchItemsByUserId";
 import Spinner from "./Components/Spinner";
 
 const UserArea = ({ setStage }) => {
   const [loading, setLoading] = useState(false);
   const [items, SetItems] = useState([]);
-  const { user, supabase } = useAppContext();
+  const { user } = useAppContext();
 
   useEffect(() => {
-    useFetchItems(supabase, SetItems, setLoading);
+    useFetchItemsByUserId(SetItems, setLoading, user);
   }, []);
 
   return (

@@ -4,11 +4,20 @@ const useFetchItems = async (client, setItems, setLoading, user) => {
   setLoading(true);
 
   if (user) {
-    const { data } = await client
-      .from("Items")
-      .select("*")
-      .eq("Owner", user.id);
-
+    console.log(user);
+    const response = await fetch(`${url}/api/v1/items/getItemsByUserId`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        owner: user.id,
+      }),
+    });
+    if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+    }
+    const data = await response.json();
     setItems(data);
     setLoading(false);
 
@@ -22,8 +31,6 @@ const useFetchItems = async (client, setItems, setLoading, user) => {
     }
     const data = await response.json();
     setItems(data);
-
-    console.log(data);
   } catch (error) {
     console.error("Error fetching items: ", error);
   }
