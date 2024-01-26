@@ -32,8 +32,8 @@ const ItemsTable = ({ items, setItems, isPublic }) => {
         <tbody>
           {items.map((item) => (
             <tr key={item.id}>
-              <td style={rowStyle}>{item.Name}</td>
-              <td style={rowStyle}>{item.Qty}</td>
+              <td style={rowStyle}>{item.name}</td>
+              <td style={rowStyle}>{item.qty}</td>
               {!isPublic && (
                 <td style={rowStyle}>
                   <button
