@@ -15,17 +15,17 @@ const getItems = (req, res) => {
 };
 
 const getItemsByUserId = (req, res) => {
-  pool.query(userQueries.getUserById, [req.body.owner], (err, result) => {
+  const owner = req.params.id;
+  pool.query(userQueries.getUserById, [owner], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
-    console.log(result);
     if (result.rowCount === 0) {
       res.status(404).json({ error: "User not found" });
       return;
     }
-    pool.query(queries.getItemsByUserId, [req.body.owner], (err, result) => {
+    pool.query(queries.getItemsByUserId, [owner], (err, result) => {
       if (err) {
         res.status(500).json({ error: err.message });
         return;

@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# open tunnel with: ssh -R shappy:80:localhost:3000 serveo.net
