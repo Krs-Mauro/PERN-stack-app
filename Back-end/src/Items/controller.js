@@ -65,7 +65,7 @@ const deleteItem = (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     }
-    console.log(result);
+
     if (result.rowCount === 0) {
       res.status(404).json({ error: "User not found" });
       return;

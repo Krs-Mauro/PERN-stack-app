@@ -1,6 +1,6 @@
-const useAddItems = async (item) => {
+const useAddItems = async (item, itemsState) => {
   const url = import.meta.env.VITE_URL;
-
+  const { items, SetItems } = itemsState;
   try {
     const response = await fetch(`${url}/api/v1/items/addItem`, {
       method: "POST",
@@ -12,8 +12,12 @@ const useAddItems = async (item) => {
     if (!response.ok) {
       console.error(`Error: ${response.status} - ${response.statusText}`);
     }
-    /* const data = await response.json();
-    console.log(data); */
+    const data = await response.json();
+    if (data.id) {
+      SetItems([...items, data]);
+    } else {
+      console.error("Error: ", data);
+    }
   } catch (error) {
     console.error("Error fetching user: ", error);
   }

@@ -7,7 +7,7 @@ import useAddItems from "./helpers/useAddItems";
 import CustomButton from "./Components/CustomButton";
 import Spinner from "./Components/Spinner";
 
-const CreateItemsButton = () => {
+const CreateItemsButton = ({ itemsState }) => {
   const [loading, setLoading] = useState(false);
   const { user } = useAppContext();
   const handleCreateItem = async () => {
@@ -22,7 +22,7 @@ const CreateItemsButton = () => {
     };
 
     setLoading(true);
-    await useAddItems(item);
+    await useAddItems(item, itemsState);
     setLoading(false);
   };
 

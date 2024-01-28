@@ -2,23 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { Box } from "@mui/material";
 
-import { useAppContext } from "./AppContext";
-import Remove from "./Components/RemoveIcon";
-import { headStyle, rowStyle, iconStyle } from "./helpers/styles";
-import subscribeToDB from "./helpers/databaseSubcriber";
+import { headStyle, rowStyle } from "./helpers/styles";
+import RemoveButton from "./RemoveButton";
 
-const ItemsTable = ({ items, setItems, isPublic }) => {
-  const [loadingRemove, setLoadingRemove] = useState(false);
-  const { supabase } = useAppContext();
-
-  subscribeToDB(supabase, items, setItems);
-
-  const handleRemove = async (id) => {
-    setLoadingRemove(true);
-    console.log("removed");
-    // await supabase.from("Items").delete().match({ id });
-    setLoadingRemove(false);
-  };
+const ItemsTable = ({ itemsState, isPublic }) => {
+  const { items } = itemsState;
   return (
     <Box sx={{ maxHeight: "25vh", overflowY: "auto" }}>
       <table>
@@ -34,16 +22,11 @@ const ItemsTable = ({ items, setItems, isPublic }) => {
             <tr key={item.id}>
               <td style={rowStyle}>{item.name}</td>
               <td style={rowStyle}>{item.qty}</td>
-              {!isPublic && (
-                <td style={rowStyle}>
-                  <button
-                    style={iconStyle}
-                    onClick={() => handleRemove(item.id)}
-                  >
-                    <Remove loading={loadingRemove} />
-                  </button>
-                </td>
-              )}
+              <RemoveButton
+                isPublic={isPublic}
+                item={item}
+                itemsState={itemsState}
+              />
             </tr>
           ))}
         </tbody>

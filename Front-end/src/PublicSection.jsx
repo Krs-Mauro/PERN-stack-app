@@ -21,7 +21,7 @@ const PublicSection = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <ItemsTable items={items} setItems={SetItems} isPublic />
+        <ItemsTable itemsState={{ items, SetItems }} isPublic />
       )}
     </Stack>
   );

@@ -12,6 +12,8 @@ const UserArea = ({ setStage }) => {
   const [items, SetItems] = useState([]);
   const { user } = useAppContext();
 
+  // TODO: Fix prop drilling in items table
+
   useEffect(() => {
     useFetchItemsByUserId(SetItems, setLoading, user);
   }, []);
@@ -27,11 +29,11 @@ const UserArea = ({ setStage }) => {
         <h1>{`Welcome ${user.email}`}</h1>
         <LogOutButton setStage={setStage} />
       </Stack>
-      <CreateItemsButton />
+      <CreateItemsButton itemsState={{ items, SetItems }} />
       {loading ? (
         <Spinner />
       ) : (
-        <ItemsTable items={items} setItems={SetItems} isPublic={false} />
+        <ItemsTable itemsState={{ items, SetItems }} isPublic={false} />
       )}
     </Stack>
   );
