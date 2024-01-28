@@ -2,16 +2,12 @@
 
 import React, { createContext, useContext, useState } from "react";
 
-import supabase from "./helpers/supabaseClient";
-import useFetchUser from "./helpers/useFetchUser";
-
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const value = {
-    supabase,
     user,
     setUser,
   };
