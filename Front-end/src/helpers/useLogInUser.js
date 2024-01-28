@@ -1,7 +1,6 @@
-const useLoginUser = async (setUser, setLoading, formData) => {
+const useLoginUser = async (setUser, formData) => {
   const url = import.meta.env.VITE_URL;
 
-  setLoading(true);
   const { email, password } = formData;
 
   try {
@@ -23,8 +22,6 @@ const useLoginUser = async (setUser, setLoading, formData) => {
   } catch (error) {
     console.error("Error fetching user: ", error);
   }
-
-  setLoading(false);
 };
 
 export default useLoginUser;

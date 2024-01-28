@@ -28,9 +28,9 @@ const AccessForm = ({ stage, setStage }) => {
     };
     setLoading(true);
     if (stage === "logging") {
-      await useLoginUser(setUser, setLoading, formData);
+      await useLoginUser(setUser, formData);
     } else {
-      await useSingUpUser(setUser, setLoading, formData);
+      await useSingUpUser(setUser, formData);
     }
     setLoading(false);
   };
