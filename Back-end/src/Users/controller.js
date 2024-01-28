@@ -58,7 +58,7 @@ const addUser = (req, res) => {
 const logUserIn = (req, res) => {
   pool.query(
     queries.logUserIn,
-    [req.body.id, req.body.password],
+    [req.body.email, req.body.password],
     (err, result) => {
       if (err) {
         res.status(500).json({ error: err.message });

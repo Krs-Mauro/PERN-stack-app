@@ -9,11 +9,10 @@ import ItemsTable from "./ItemsTable";
 
 const PublicSection = () => {
   const [loading, setLoading] = useState(false);
-
-  const { supabase } = useAppContext();
   const [items, SetItems] = useState([]);
+
   useEffect(() => {
-    useFetchItems(supabase, SetItems, setLoading);
+    useFetchItems(SetItems, setLoading);
   }, []);
 
   return (

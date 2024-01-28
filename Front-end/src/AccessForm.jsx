@@ -4,6 +4,7 @@ import { Stack } from "@mui/material";
 
 import { useAppContext } from "./AppContext";
 import useFetchUser from "./helpers/useFetchUser";
+import useLoginUser from "./helpers/useLogInUser";
 import CustomButton from "./Components/CustomButton";
 import Spinner from "./Components/Spinner";
 import { inputStyles } from "./helpers/styles";
@@ -21,13 +22,17 @@ const AccessForm = ({ stage, setStage }) => {
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await supabase.auth.signInWithPassword({
+
+    const formData = {
       email: e.target.email.value,
       password: e.target.password.value,
-    });
-    useFetchUser(supabase, setUser);
+    };
+
+    await useLoginUser(setUser, setLoading, formData);
+
     setLoading(false);
   };
+
   const handleSubmitSingup = async (e) => {
     e.preventDefault();
     setLoading(true);
