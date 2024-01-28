@@ -26,7 +26,7 @@ const UserArea = ({ setStage }) => {
         alignItems="center"
         gap="30px"
       >
-        <h1>{`Welcome ${user.email}`}</h1>
+        <h1>{`Welcome ${user.userName}`}</h1>
         <LogOutButton setStage={setStage} />
       </Stack>
       <CreateItemsButton itemsState={{ items, SetItems }} />

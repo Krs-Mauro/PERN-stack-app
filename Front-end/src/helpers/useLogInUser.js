@@ -18,7 +18,7 @@ const useLoginUser = async (setUser, formData) => {
       console.error(`Error: ${response.status} - ${response.statusText}`);
     }
     const data = await response.json();
-    setUser(data);
+    setUser({ ...data, userName: data.email.split("@")[0] });
   } catch (error) {
     console.error("Error fetching user: ", error);
   }
