@@ -4,7 +4,6 @@ import { Stack } from "@mui/material";
 
 import { AppProvider } from "./AppContext";
 import PrivateSection from "./PrivateSection";
-import PublicSection from "./PublicSection";
 
 const App = () => {
   return (
@@ -15,7 +14,6 @@ const App = () => {
         sx={{ height: "100vh" }}
       >
         <PrivateSection />
-        <PublicSection />
       </Stack>
     </AppProvider>
   );
