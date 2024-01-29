@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Stack } from "@mui/material";
 
 import useFetchItems from "./helpers/useFetchItems";
-import { useAppContext } from "./AppContext";
 import Spinner from "./Components/Spinner";
 import ItemsTable from "./ItemsTable";
 

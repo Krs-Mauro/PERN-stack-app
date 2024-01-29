@@ -1,5 +1,3 @@
-// create a context for the whole app
-
 import React, { createContext, useContext, useState } from "react";
 
 const AppContext = createContext();
